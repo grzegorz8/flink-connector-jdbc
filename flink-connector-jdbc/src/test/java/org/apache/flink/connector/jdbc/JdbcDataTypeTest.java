@@ -119,6 +119,19 @@ public class JdbcDataTypeTest {
                 createTestItem("oracle", "TIMESTAMP(3)"),
                 createTestItem("oracle", "TIMESTAMP WITHOUT TIME ZONE"),
                 createTestItem("oracle", "VARBINARY"),
+                createTestItem("elasticsearch", "BIGINT"),
+                createTestItem("elasticsearch", "BOOLEAN"),
+                createTestItem("elasticsearch", "DATE"),
+                createTestItem("elasticsearch", "DOUBLE"),
+                createTestItem("elasticsearch", "INTEGER"),
+                createTestItem("elasticsearch", "FLOAT"),
+                createTestItem("elasticsearch", "SMALLINT"),
+                createTestItem("elasticsearch", "TINYINT"),
+                createTestItem("elasticsearch", "TIMESTAMP(3)"),
+                createTestItem("elasticsearch", "TIMESTAMP(9)"),
+                createTestItem("elasticsearch", "TIMESTAMP WITHOUT TIME ZONE"),
+                createTestItem("elasticsearch", "VARBINARY"),
+                createTestItem("elasticsearch", "VARCHAR"),
 
                 // Unsupported types throws errors.
                 createTestItem(
@@ -168,7 +181,15 @@ public class JdbcDataTypeTest {
                 createTestItem(
                         "oracle",
                         "VARBINARY(10)",
-                        "The Oracle dialect doesn't support type: VARBINARY(10)."));
+                        "The Oracle dialect doesn't support type: VARBINARY(10)."),
+                createTestItem(
+                        "elasticsearch",
+                        "TIME(0)",
+                        "The Elasticsearch dialect doesn't support type: TIME(0)."),
+                createTestItem(
+                        "elasticsearch",
+                        "TIMESTAMP_LTZ(3)",
+                        "The Elasticsearch dialect doesn't support type: TIMESTAMP_LTZ(3)."));
     }
 
     private static TestItem createTestItem(Object... args) {
