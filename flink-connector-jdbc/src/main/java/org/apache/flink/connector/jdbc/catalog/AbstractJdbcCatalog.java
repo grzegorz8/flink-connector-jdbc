@@ -100,6 +100,19 @@ public abstract class AbstractJdbcCatalog extends AbstractCatalog {
             String username,
             String pwd,
             String baseUrl) {
+        this(userClassLoader, catalogName, defaultDatabase, username, pwd,
+            baseUrl.endsWith("/") ? baseUrl : baseUrl + "/",
+            (baseUrl.endsWith("/") ? baseUrl : baseUrl + "/") + defaultDatabase);
+    }
+
+    public AbstractJdbcCatalog(
+            ClassLoader userClassLoader,
+            String catalogName,
+            String defaultDatabase,
+            String username,
+            String pwd,
+            String baseUrl,
+            String defaultUrl) {
         super(catalogName, defaultDatabase);
 
         checkNotNull(userClassLoader);
@@ -112,8 +125,8 @@ public abstract class AbstractJdbcCatalog extends AbstractCatalog {
         this.userClassLoader = userClassLoader;
         this.username = username;
         this.pwd = pwd;
-        this.baseUrl = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
-        this.defaultUrl = this.baseUrl + defaultDatabase;
+        this.baseUrl = baseUrl;
+        this.defaultUrl = defaultUrl;
     }
 
     @Override

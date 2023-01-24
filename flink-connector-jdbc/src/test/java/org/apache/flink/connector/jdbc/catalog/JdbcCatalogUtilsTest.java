@@ -30,6 +30,10 @@ class JdbcCatalogUtilsTest {
         JdbcCatalogUtils.validateJdbcUrl("jdbc:postgresql://localhost:5432/");
 
         JdbcCatalogUtils.validateJdbcUrl("jdbc:postgresql://localhost:5432");
+
+        JdbcCatalogUtils.validateJdbcUrl("jdbc:elasticsearch://https://localhost:9200");
+
+        JdbcCatalogUtils.validateJdbcUrl("jdbc:es://https://localhost:9200/");
     }
 
     @Test
@@ -39,5 +43,7 @@ class JdbcCatalogUtilsTest {
                                 JdbcCatalogUtils.validateJdbcUrl(
                                         "jdbc:postgresql://localhost:5432/db"))
                 .isInstanceOf(IllegalArgumentException.class);
+
+        // TODO more tests
     }
 }
